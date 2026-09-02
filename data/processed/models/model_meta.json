@@ -1,0 +1,143 @@
+{
+  "quality_model": "xgboost",
+  "quality_metrics": {
+    "xgboost": {
+      "accuracy": 0.9432,
+      "precision": 0.93,
+      "recall": 0.949,
+      "f1": 0.9394,
+      "roc_auc": 0.9769,
+      "cv_auc_mean": 0.9763,
+      "cv_auc_std": 0.0031
+    },
+    "random_forest": {
+      "accuracy": 0.8652,
+      "precision": 0.8195,
+      "recall": 0.9094,
+      "f1": 0.8622,
+      "roc_auc": 0.9418,
+      "cv_auc_mean": 0.9391,
+      "cv_auc_std": 0.0055
+    }
+  },
+  "defect_metrics": {
+    "accuracy": 0.8979,
+    "macro_f1": 0.8265
+  },
+  "feature_columns": [
+    "melt_temp",
+    "mold_temp",
+    "time_to_fill",
+    "plasticizing_time",
+    "cycle_time",
+    "closing_force",
+    "clamp_force_peak",
+    "torque_peak",
+    "torque_mean",
+    "back_pressure_peak",
+    "injection_pressure_peak",
+    "screw_pos_end_hold",
+    "shot_volume",
+    "mat_ABS",
+    "mat_PA66",
+    "mat_PC",
+    "mat_PMMA",
+    "mat_POM",
+    "mat_PP",
+    "mat_PS"
+  ],
+  "defect_classes": [
+    "合格",
+    "烧焦",
+    "熔接线",
+    "缩痕",
+    "缺料",
+    "翘曲变形",
+    "银纹",
+    "飞边"
+  ],
+  "feature_importance": [
+    [
+      "melt_temp",
+      0.1288
+    ],
+    [
+      "mat_POM",
+      0.0992
+    ],
+    [
+      "cycle_time",
+      0.092
+    ],
+    [
+      "mat_PC",
+      0.0844
+    ],
+    [
+      "mold_temp",
+      0.0722
+    ],
+    [
+      "mat_PMMA",
+      0.0714
+    ],
+    [
+      "time_to_fill",
+      0.0611
+    ],
+    [
+      "mat_PS",
+      0.0582
+    ],
+    [
+      "injection_pressure_peak",
+      0.0576
+    ],
+    [
+      "mat_ABS",
+      0.0572
+    ],
+    [
+      "mat_PP",
+      0.048
+    ],
+    [
+      "mat_PA66",
+      0.0437
+    ],
+    [
+      "screw_pos_end_hold",
+      0.036
+    ],
+    [
+      "plasticizing_time",
+      0.0149
+    ],
+    [
+      "closing_force",
+      0.0136
+    ],
+    [
+      "torque_peak",
+      0.0131
+    ],
+    [
+      "shot_volume",
+      0.0129
+    ],
+    [
+      "clamp_force_peak",
+      0.0128
+    ],
+    [
+      "torque_mean",
+      0.0115
+    ],
+    [
+      "back_pressure_peak",
+      0.0115
+    ]
+  ],
+  "trained_samples": 8451,
+  "defect_trained_samples": 7000
+}

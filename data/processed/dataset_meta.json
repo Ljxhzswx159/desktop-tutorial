@@ -1,0 +1,802 @@
+{
+  "total": 8451,
+  "by_material": {
+    "ABS": {
+      "count": 2451,
+      "ok_rate": 0.455,
+      "ranges": {
+        "melt_temp": [
+          81.75,
+          276.64
+        ],
+        "mold_temp": [
+          22.08,
+          97.56
+        ],
+        "time_to_fill": [
+          3.15,
+          11.23
+        ],
+        "plasticizing_time": [
+          1.3,
+          7.66
+        ],
+        "cycle_time": [
+          39.54,
+          95.45
+        ],
+        "closing_force": [
+          794.16,
+          1045.07
+        ],
+        "clamp_force_peak": [
+          812.33,
+          1067.39
+        ],
+        "torque_peak": [
+          58.54,
+          201.93
+        ],
+        "torque_mean": [
+          46.27,
+          173.99
+        ],
+        "back_pressure_peak": [
+          109.39,
+          196.11
+        ],
+        "injection_pressure_peak": [
+          688.34,
+          1071.81
+        ],
+        "screw_pos_end_hold": [
+          5.64,
+          13.47
+        ],
+        "shot_volume": [
+          11.31,
+          25.66
+        ]
+      },
+      "rec_ranges": {
+        "melt_temp": [
+          215,
+          235
+        ],
+        "mold_temp": [
+          55,
+          65
+        ],
+        "time_to_fill": [
+          5.5,
+          7.5
+        ],
+        "plasticizing_time": [
+          2.8,
+          5.0
+        ],
+        "cycle_time": [
+          60,
+          75
+        ],
+        "closing_force": [
+          870,
+          930
+        ],
+        "clamp_force_peak": [
+          890,
+          950
+        ],
+        "torque_peak": [
+          95,
+          140
+        ],
+        "torque_mean": [
+          80,
+          120
+        ],
+        "back_pressure_peak": [
+          140,
+          160
+        ],
+        "injection_pressure_peak": [
+          820,
+          950
+        ],
+        "screw_pos_end_hold": [
+          8.3,
+          9.2
+        ],
+        "shot_volume": [
+          16,
+          20
+        ]
+      }
+    },
+    "PA66": {
+      "count": 1000,
+      "ok_rate": 0.469,
+      "ranges": {
+        "melt_temp": [
+          246.53,
+          303.41
+        ],
+        "mold_temp": [
+          46.57,
+          103.22
+        ],
+        "time_to_fill": [
+          4.06,
+          11.96
+        ],
+        "plasticizing_time": [
+          1.37,
+          7.59
+        ],
+        "cycle_time": [
+          38.02,
+          92.16
+        ],
+        "closing_force": [
+          797.25,
+          1044.44
+        ],
+        "clamp_force_peak": [
+          813.62,
+          1066.16
+        ],
+        "torque_peak": [
+          58.83,
+          201.37
+        ],
+        "torque_mean": [
+          47.07,
+          173.21
+        ],
+        "back_pressure_peak": [
+          109.19,
+          195.15
+        ],
+        "injection_pressure_peak": [
+          709.01,
+          1089.68
+        ],
+        "screw_pos_end_hold": [
+          5.53,
+          13.43
+        ],
+        "shot_volume": [
+          11.4,
+          25.44
+        ]
+      },
+      "rec_ranges": {
+        "melt_temp": [
+          265,
+          280
+        ],
+        "mold_temp": [
+          70,
+          80
+        ],
+        "time_to_fill": [
+          7,
+          9
+        ],
+        "plasticizing_time": [
+          2.8,
+          5.0
+        ],
+        "cycle_time": [
+          58,
+          72
+        ],
+        "closing_force": [
+          870,
+          930
+        ],
+        "clamp_force_peak": [
+          890,
+          950
+        ],
+        "torque_peak": [
+          95,
+          140
+        ],
+        "torque_mean": [
+          80,
+          120
+        ],
+        "back_pressure_peak": [
+          140,
+          160
+        ],
+        "injection_pressure_peak": [
+          840,
+          970
+        ],
+        "screw_pos_end_hold": [
+          8.3,
+          9.2
+        ],
+        "shot_volume": [
+          16,
+          20
+        ]
+      }
+    },
+    "PC": {
+      "count": 1000,
+      "ok_rate": 0.44,
+      "ranges": {
+        "melt_temp": [
+          247.53,
+          341.97
+        ],
+        "mold_temp": [
+          48.19,
+          142.39
+        ],
+        "time_to_fill": [
+          4.89,
+          13.65
+        ],
+        "plasticizing_time": [
+          1.33,
+          7.66
+        ],
+        "cycle_time": [
+          44.56,
+          100.14
+        ],
+        "closing_force": [
+          792.77,
+          1046.15
+        ],
+        "clamp_force_peak": [
+          812.22,
+          1065.0
+        ],
+        "torque_peak": [
+          60.19,
+          200.93
+        ],
+        "torque_mean": [
+          46.06,
+          173.36
+        ],
+        "back_pressure_peak": [
+          108.52,
+          195.98
+        ],
+        "injection_pressure_peak": [
+          749.75,
+          1131.96
+        ],
+        "screw_pos_end_hold": [
+          5.54,
+          13.42
+        ],
+        "shot_volume": [
+          11.35,
+          25.68
+        ]
+      },
+      "rec_ranges": {
+        "melt_temp": [
+          285,
+          305
+        ],
+        "mold_temp": [
+          85,
+          95
+        ],
+        "time_to_fill": [
+          8,
+          10
+        ],
+        "plasticizing_time": [
+          2.8,
+          5.0
+        ],
+        "cycle_time": [
+          65,
+          80
+        ],
+        "closing_force": [
+          870,
+          930
+        ],
+        "clamp_force_peak": [
+          890,
+          950
+        ],
+        "torque_peak": [
+          95,
+          140
+        ],
+        "torque_mean": [
+          80,
+          120
+        ],
+        "back_pressure_peak": [
+          140,
+          160
+        ],
+        "injection_pressure_peak": [
+          880,
+          1010
+        ],
+        "screw_pos_end_hold": [
+          8.3,
+          9.2
+        ],
+        "shot_volume": [
+          16,
+          20
+        ]
+      }
+    },
+    "PMMA": {
+      "count": 1000,
+      "ok_rate": 0.459,
+      "ranges": {
+        "melt_temp": [
+          187.51,
+          282.4
+        ],
+        "mold_temp": [
+          36.57,
+          93.25
+        ],
+        "time_to_fill": [
+          4.02,
+          12.0
+        ],
+        "plasticizing_time": [
+          1.33,
+          7.64
+        ],
+        "cycle_time": [
+          39.84,
+          94.18
+        ],
+        "closing_force": [
+          792.87,
+          1047.29
+        ],
+        "clamp_force_peak": [
+          812.78,
+          1066.86
+        ],
+        "torque_peak": [
+          60.01,
+          199.15
+        ],
+        "torque_mean": [
+          47.58,
+          172.3
+        ],
+        "back_pressure_peak": [
+          108.98,
+          196.3
+        ],
+        "injection_pressure_peak": [
+          669.17,
+          1049.08
+        ],
+        "screw_pos_end_hold": [
+          5.5,
+          13.45
+        ],
+        "shot_volume": [
+          11.35,
+          25.63
+        ]
+      },
+      "rec_ranges": {
+        "melt_temp": [
+          225,
+          245
+        ],
+        "mold_temp": [
+          60,
+          70
+        ],
+        "time_to_fill": [
+          7,
+          9
+        ],
+        "plasticizing_time": [
+          2.8,
+          5.0
+        ],
+        "cycle_time": [
+          60,
+          74
+        ],
+        "closing_force": [
+          870,
+          930
+        ],
+        "clamp_force_peak": [
+          890,
+          950
+        ],
+        "torque_peak": [
+          95,
+          140
+        ],
+        "torque_mean": [
+          80,
+          120
+        ],
+        "back_pressure_peak": [
+          140,
+          160
+        ],
+        "injection_pressure_peak": [
+          800,
+          930
+        ],
+        "screw_pos_end_hold": [
+          8.3,
+          9.2
+        ],
+        "shot_volume": [
+          16,
+          20
+        ]
+      }
+    },
+    "POM": {
+      "count": 1000,
+      "ok_rate": 0.463,
+      "ranges": {
+        "melt_temp": [
+          162.06,
+          237.96
+        ],
+        "mold_temp": [
+          42.14,
+          117.51
+        ],
+        "time_to_fill": [
+          3.66,
+          10.84
+        ],
+        "plasticizing_time": [
+          1.3,
+          7.62
+        ],
+        "cycle_time": [
+          37.91,
+          91.84
+        ],
+        "closing_force": [
+          792.41,
+          1046.74
+        ],
+        "clamp_force_peak": [
+          812.3,
+          1066.86
+        ],
+        "torque_peak": [
+          58.42,
+          201.08
+        ],
+        "torque_mean": [
+          46.9,
+          173.64
+        ],
+        "back_pressure_peak": [
+          109.41,
+          196.46
+        ],
+        "injection_pressure_peak": [
+          648.94,
+          1029.77
+        ],
+        "screw_pos_end_hold": [
+          5.52,
+          13.49
+        ],
+        "shot_volume": [
+          11.38,
+          25.68
+        ]
+      },
+      "rec_ranges": {
+        "melt_temp": [
+          195,
+          210
+        ],
+        "mold_temp": [
+          75,
+          85
+        ],
+        "time_to_fill": [
+          6,
+          8
+        ],
+        "plasticizing_time": [
+          2.8,
+          5.0
+        ],
+        "cycle_time": [
+          58,
+          72
+        ],
+        "closing_force": [
+          870,
+          930
+        ],
+        "clamp_force_peak": [
+          890,
+          950
+        ],
+        "torque_peak": [
+          95,
+          140
+        ],
+        "torque_mean": [
+          80,
+          120
+        ],
+        "back_pressure_peak": [
+          140,
+          160
+        ],
+        "injection_pressure_peak": [
+          780,
+          910
+        ],
+        "screw_pos_end_hold": [
+          8.3,
+          9.2
+        ],
+        "shot_volume": [
+          16,
+          20
+        ]
+      }
+    },
+    "PP": {
+      "count": 1000,
+      "ok_rate": 0.495,
+      "ranges": {
+        "melt_temp": [
+          164.02,
+          315.95
+        ],
+        "mold_temp": [
+          -6.14,
+          106.72
+        ],
+        "time_to_fill": [
+          2.67,
+          9.85
+        ],
+        "plasticizing_time": [
+          1.3,
+          7.7
+        ],
+        "cycle_time": [
+          34.91,
+          90.44
+        ],
+        "closing_force": [
+          792.13,
+          1045.14
+        ],
+        "clamp_force_peak": [
+          819.37,
+          1067.68
+        ],
+        "torque_peak": [
+          59.26,
+          201.88
+        ],
+        "torque_mean": [
+          46.38,
+          173.44
+        ],
+        "back_pressure_peak": [
+          111.1,
+          196.17
+        ],
+        "injection_pressure_peak": [
+          582.65,
+          948.77
+        ],
+        "screw_pos_end_hold": [
+          5.71,
+          13.48
+        ],
+        "shot_volume": [
+          11.35,
+          25.62
+        ]
+      },
+      "rec_ranges": {
+        "melt_temp": [
+          220,
+          250
+        ],
+        "mold_temp": [
+          35,
+          45
+        ],
+        "time_to_fill": [
+          5,
+          7
+        ],
+        "plasticizing_time": [
+          2.8,
+          5.0
+        ],
+        "cycle_time": [
+          55,
+          70
+        ],
+        "closing_force": [
+          870,
+          930
+        ],
+        "clamp_force_peak": [
+          890,
+          950
+        ],
+        "torque_peak": [
+          95,
+          140
+        ],
+        "torque_mean": [
+          80,
+          120
+        ],
+        "back_pressure_peak": [
+          140,
+          160
+        ],
+        "injection_pressure_peak": [
+          700,
+          830
+        ],
+        "screw_pos_end_hold": [
+          8.3,
+          9.2
+        ],
+        "shot_volume": [
+          16,
+          20
+        ]
+      }
+    },
+    "PS": {
+      "count": 1000,
+      "ok_rate": 0.478,
+      "ranges": {
+        "melt_temp": [
+          153.11,
+          266.86
+        ],
+        "mold_temp": [
+          2.25,
+          77.97
+        ],
+        "time_to_fill": [
+          2.17,
+          9.26
+        ],
+        "plasticizing_time": [
+          1.36,
+          7.61
+        ],
+        "cycle_time": [
+          31.46,
+          88.46
+        ],
+        "closing_force": [
+          792.03,
+          1047.92
+        ],
+        "clamp_force_peak": [
+          813.15,
+          1067.67
+        ],
+        "torque_peak": [
+          59.51,
+          198.19
+        ],
+        "torque_mean": [
+          46.05,
+          173.48
+        ],
+        "back_pressure_peak": [
+          108.99,
+          194.4
+        ],
+        "injection_pressure_peak": [
+          561.36,
+          928.98
+        ],
+        "screw_pos_end_hold": [
+          5.63,
+          13.48
+        ],
+        "shot_volume": [
+          11.38,
+          25.53
+        ]
+      },
+      "rec_ranges": {
+        "melt_temp": [
+          200,
+          220
+        ],
+        "mold_temp": [
+          35,
+          45
+        ],
+        "time_to_fill": [
+          4.5,
+          6.5
+        ],
+        "plasticizing_time": [
+          2.8,
+          5.0
+        ],
+        "cycle_time": [
+          52,
+          66
+        ],
+        "closing_force": [
+          870,
+          930
+        ],
+        "clamp_force_peak": [
+          890,
+          950
+        ],
+        "torque_peak": [
+          95,
+          140
+        ],
+        "torque_mean": [
+          80,
+          120
+        ],
+        "back_pressure_peak": [
+          140,
+          160
+        ],
+        "injection_pressure_peak": [
+          680,
+          810
+        ],
+        "screw_pos_end_hold": [
+          8.3,
+          9.2
+        ],
+        "shot_volume": [
+          16,
+          20
+        ]
+      }
+    }
+  },
+  "by_defect": {
+    "合格": 3986,
+    "未知": 776,
+    "烧焦": 307,
+    "熔接线": 692,
+    "缩痕": 480,
+    "缺料": 956,
+    "翘曲变形": 211,
+    "银纹": 751,
+    "飞边": 292
+  },
+  "real_rows": 1451,
+  "synthetic_rows": 7000
+}

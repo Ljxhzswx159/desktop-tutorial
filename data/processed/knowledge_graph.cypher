@@ -1,0 +1,104 @@
+// 注塑工艺知识图谱 Neo4j 导入脚本(自动生成)
+// 实体类型: 材料, 设备, 参数, 缺陷, 对策, 工艺规则
+// 关系类型: 适用于, 影响, 解决, 约束
+
+// 1. 约束
+CREATE CONSTRAINT IF NOT EXISTS FOR (n:Entity) REQUIRE n.id IS UNIQUE;
+
+// 2. 实体
+MERGE (:Entity {id: 'M_ABS', name: 'ABS', type: '材料', 全称: '丙烯腈-丁二烯-苯乙烯共聚物', 熔体温度范围: '190-250', 模具温度范围: '40-80', 干燥条件: '80°C 2-4h', 收缩率: '0.4-0.7%', 特性: '综合性能好、易电镀、流动性中等'});
+MERGE (:Entity {id: 'M_PP', name: 'PP', type: '材料', 全称: '聚丙烯', 熔体温度范围: '200-280', 模具温度范围: '20-80', 干燥条件: '一般不干燥', 收缩率: '1.0-2.5%', 特性: '密度低、耐化学性好、收缩率大'});
+MERGE (:Entity {id: 'M_PC', name: 'PC', type: '材料', 全称: '聚碳酸酯', 熔体温度范围: '270-320', 模具温度范围: '70-120', 干燥条件: '120°C 3-4h', 收缩率: '0.5-0.7%', 特性: '透明、抗冲击、黏度大'});
+MERGE (:Entity {id: 'M_PA66', name: 'PA66', type: '材料', 全称: '尼龙66', 熔体温度范围: '260-290', 模具温度范围: '60-90', 干燥条件: '80°C 4-8h', 收缩率: '1.0-1.8%', 特性: '耐磨、吸湿性强、需充分干燥'});
+MERGE (:Entity {id: 'M_POM', name: 'POM', type: '材料', 全称: '聚甲醛', 熔体温度范围: '180-220', 模具温度范围: '60-100', 干燥条件: '80°C 3-4h', 收缩率: '1.8-2.5%', 特性: '自润滑、易分解产生甲醛气体'});
+MERGE (:Entity {id: 'M_PS', name: 'PS', type: '材料', 全称: '聚苯乙烯', 熔体温度范围: '180-240', 模具温度范围: '20-60', 干燥条件: '一般不干燥', 收缩率: '0.4-0.7%', 特性: '透明、脆性大、流动性好'});
+MERGE (:Entity {id: 'M_PMMA', name: 'PMMA', type: '材料', 全称: '聚甲基丙烯酸甲酯(亚克力)', 熔体温度范围: '210-260', 模具温度范围: '50-80', 干燥条件: '80°C 2-4h', 收缩率: '0.3-0.8%', 特性: '高透明、表面硬度高'});
+MERGE (:Entity {id: 'E_HT1200', name: '海天MA1200', type: '设备', 锁模力: '120吨', 螺杆直径: '36mm', 理论注射容量: '192cm³', 注射压力上限: '170MPa', 适用产品: '小型精密件'});
+MERGE (:Entity {id: 'E_HT2500', name: '海天MA2500', type: '设备', 锁模力: '250吨', 螺杆直径: '50mm', 理论注射容量: '453cm³', 注射压力上限: '150MPa', 适用产品: '中型结构件'});
+MERGE (:Entity {id: 'E_ZS120', name: '震雄SM120', type: '设备', 锁模力: '120吨', 螺杆直径: '38mm', 理论注射容量: '230cm³', 注射压力上限: '160MPa', 适用产品: '小型结构件'});
+MERGE (:Entity {id: 'E_YZ260', name: '伊之密UN260', type: '设备', 锁模力: '260吨', 螺杆直径: '52mm', 理论注射容量: '520cm³', 注射压力上限: '145MPa', 适用产品: '中大型件'});
+MERGE (:Entity {id: 'P_MT', name: '模具温度', type: '参数', 单位: '°C', 典型范围: '20-120', 方向: '影响制品表面质量与冷却速度'});
+MERGE (:Entity {id: 'P_MeltT', name: '熔体温度', type: '参数', 单位: '°C', 典型范围: '180-320', 方向: '影响材料流动性与降解风险'});
+MERGE (:Entity {id: 'P_IP', name: '注射压力', type: '参数', 单位: 'MPa', 典型范围: '60-150', 方向: '影响充模完整性与飞边风险'});
+MERGE (:Entity {id: 'P_IV', name: '注射速度', type: '参数', 单位: 'mm/s', 典型范围: '20-120', 方向: '影响充模时间与银纹/烧焦风险'});
+MERGE (:Entity {id: 'P_HP', name: '保压压力', type: '参数', 单位: 'MPa', 典型范围: '40-120', 方向: '补偿收缩、决定缩痕与尺寸'});
+MERGE (:Entity {id: 'P_HT', name: '保压时间', type: '参数', 单位: 's', 典型范围: '2-15', 方向: '影响缩痕与尺寸稳定性'});
+MERGE (:Entity {id: 'P_CT', name: '冷却时间', type: '参数', 单位: 's', 典型范围: '10-60', 方向: '影响成型周期与翘曲变形'});
+MERGE (:Entity {id: 'D_WARP', name: '翘曲变形', type: '缺陷', 描述: '制品冷却后发生形状扭曲', 主要诱因: '冷却不均、内应力大、冷却时间不足'});
+MERGE (:Entity {id: 'D_SINK', name: '缩痕', type: '缺陷', 描述: '制品厚壁处表面凹陷', 主要诱因: '保压不足、冷却收缩未补偿'});
+MERGE (:Entity {id: 'D_FLASH', name: '飞边(溢料)', type: '缺陷', 描述: '分型面处多出薄层塑料', 主要诱因: '注射压力过高、锁模力不足、模具磨损'});
+MERGE (:Entity {id: 'D_SILVER', name: '银纹', type: '缺陷', 描述: '制品表面银白色条纹', 主要诱因: '原料含水、熔体温度过高、剪切过大'});
+MERGE (:Entity {id: 'D_WELD', name: '熔接线', type: '缺陷', 描述: '两股料流汇合处形成的线痕', 主要诱因: '模具温度低、注射速度慢、浇口位置不当'});
+MERGE (:Entity {id: 'D_VOID', name: '气泡', type: '缺陷', 描述: '制品内部或表面气泡', 主要诱因: '原料含水、注射速度过快、背压不足'});
+MERGE (:Entity {id: 'D_SHORT', name: '缺料(短射)', type: '缺陷', 描述: '型腔未充满', 主要诱因: '注射压力/速度不足、熔体温度低、料量不足'});
+MERGE (:Entity {id: 'D_BURN', name: '烧焦', type: '缺陷', 描述: '制品局部发黄变黑', 主要诱因: '排气不良、注射速度过快、熔体温度过高'});
+MERGE (:Entity {id: 'D_CRACK', name: '裂纹', type: '缺陷', 描述: '制品表面或内部开裂', 主要诱因: '内应力过大、脱模不当、材料脆性'});
+MERGE (:Entity {id: 'D_DIM', name: '尺寸偏差', type: '缺陷', 描述: '制品尺寸超差', 主要诱因: '收缩率波动、保压不稳定、模具温度波动'});
+MERGE (:Entity {id: 'C_COOL', name: '延长冷却时间并均衡模具温度', type: '对策', 操作要点: '冷却时间延长10-30%;检查各水道流量一致性'});
+MERGE (:Entity {id: 'C_HOLD', name: '提高保压压力并延长保压时间', type: '对策', 操作要点: '保压压力提高10-20MPa;保压时间延长2-5s'});
+MERGE (:Entity {id: 'C_PRESS_DOWN', name: '降低注射压力与速度', type: '对策', 操作要点: '注射压力降低10-15%;速度降至推荐值下限'});
+MERGE (:Entity {id: 'C_DRY', name: '严格干燥原料', type: '对策', 操作要点: '按材料牌号要求温度与时间干燥;检查料斗密封'});
+MERGE (:Entity {id: 'C_MOLD_T_UP', name: '提高模具温度', type: '对策', 操作要点: '模具温度提高10-20°C;保持各区域温度均匀'});
+MERGE (:Entity {id: 'C_MOLD_T_DOWN', name: '降低模具温度', type: '对策', 操作要点: '模具温度降低5-15°C;检查冷却水道'});
+MERGE (:Entity {id: 'C_PRESS_UP', name: '提高注射压力与注射速度', type: '对策', 操作要点: '注射压力提高10-20%;适当提高注射速度'});
+MERGE (:Entity {id: 'C_VENT', name: '改善模具排气', type: '对策', 操作要点: '加深排气槽;清理排气口堵塞;必要时加装真空排气'});
+MERGE (:Entity {id: 'C_ANNEAL', name: '制品退火处理', type: '对策', 操作要点: '制品置于低于热变形温度10-20°C环境保温1-2h缓冷'});
+MERGE (:Entity {id: 'R_HOLD_TIME', name: '保压时间设定规则', type: '工艺规则', 规则内容: '保压时间=浇口冻结时间+(0~2)s;过短导致缩痕,过长浪费周期'});
+MERGE (:Entity {id: 'R_COOL_RATIO', name: '冷却时间占比规则', type: '工艺规则', 规则内容: '冷却时间约占成型周期50%-70%;壁厚每增加1mm,冷却时间约增加20%-30%'});
+MERGE (:Entity {id: 'R_MELT_RANGE', name: '熔体温度范围规则', type: '工艺规则', 规则内容: '熔体温度须控制在材料推荐范围内;过高易降解产生银纹/烧焦,过低流动性差导致短射'});
+MERGE (:Entity {id: 'R_MOLD_TEMP', name: '模具温度设定规则', type: '工艺规则', 规则内容: '模具温度取材料推荐范围中值;提高模温改善熔接线但延长冷却时间'});
+MERGE (:Entity {id: 'R_PRESS_MARGIN', name: '注射压力裕量规则', type: '工艺规则', 规则内容: '注射压力设定值不超过设备上限的85%;正常生产压力约为上限的50%-70%'});
+MERGE (:Entity {id: 'R_HOLD_PRESSURE', name: '保压压力设定规则', type: '工艺规则', 规则内容: '保压压力通常为注射压力的60%-80%;PP等结晶材料可略低'});
+
+// 3. 关系
+MATCH (a:Entity {id: 'E_HT1200'}), (b:Entity {id: 'M_ABS'}) MERGE (a)-[:适用于, 说明: '小型精密件常用组合']->(b);
+MATCH (a:Entity {id: 'E_HT1200'}), (b:Entity {id: 'M_PS'}) MERGE (a)-[:适用于]->(b);
+MATCH (a:Entity {id: 'E_HT2500'}), (b:Entity {id: 'M_PP'}) MERGE (a)-[:适用于]->(b);
+MATCH (a:Entity {id: 'E_HT2500'}), (b:Entity {id: 'M_PA66'}) MERGE (a)-[:适用于]->(b);
+MATCH (a:Entity {id: 'E_ZS120'}), (b:Entity {id: 'M_POM'}) MERGE (a)-[:适用于]->(b);
+MATCH (a:Entity {id: 'E_YZ260'}), (b:Entity {id: 'M_PC'}) MERGE (a)-[:适用于, 说明: 'PC黏度大需大吨位锁模']->(b);
+MATCH (a:Entity {id: 'E_YZ260'}), (b:Entity {id: 'M_PMMA'}) MERGE (a)-[:适用于]->(b);
+MATCH (a:Entity {id: 'E_HT2500'}), (b:Entity {id: 'M_POM'}) MERGE (a)-[:适用于]->(b);
+MATCH (a:Entity {id: 'P_MT'}), (b:Entity {id: 'D_WARP'}) MERGE (a)-[:影响, 方向: '模具温度不均加剧翘曲']->(b);
+MATCH (a:Entity {id: 'P_MT'}), (b:Entity {id: 'D_WELD'}) MERGE (a)-[:影响, 方向: '模具温度过低导致明显熔接线']->(b);
+MATCH (a:Entity {id: 'P_MT'}), (b:Entity {id: 'D_DIM'}) MERGE (a)-[:影响, 方向: '模温波动导致收缩率波动']->(b);
+MATCH (a:Entity {id: 'P_MeltT'}), (b:Entity {id: 'D_SILVER'}) MERGE (a)-[:影响, 方向: '熔体温度过高材料降解产生银纹']->(b);
+MATCH (a:Entity {id: 'P_MeltT'}), (b:Entity {id: 'D_SHORT'}) MERGE (a)-[:影响, 方向: '熔体温度过低流动性差导致短射']->(b);
+MATCH (a:Entity {id: 'P_MeltT'}), (b:Entity {id: 'D_BURN'}) MERGE (a)-[:影响, 方向: '熔体温度过高导致烧焦']->(b);
+MATCH (a:Entity {id: 'P_IP'}), (b:Entity {id: 'D_FLASH'}) MERGE (a)-[:影响, 方向: '注射压力过高导致飞边']->(b);
+MATCH (a:Entity {id: 'P_IP'}), (b:Entity {id: 'D_SHORT'}) MERGE (a)-[:影响, 方向: '注射压力不足导致短射']->(b);
+MATCH (a:Entity {id: 'P_IP'}), (b:Entity {id: 'D_CRACK'}) MERGE (a)-[:影响, 方向: '压力过大内应力大导致裂纹']->(b);
+MATCH (a:Entity {id: 'P_IV'}), (b:Entity {id: 'D_SILVER'}) MERGE (a)-[:影响, 方向: '注射速度过快剪切生热产生银纹']->(b);
+MATCH (a:Entity {id: 'P_IV'}), (b:Entity {id: 'D_BURN'}) MERGE (a)-[:影响, 方向: '注射速度过快气体来不及排出导致烧焦']->(b);
+MATCH (a:Entity {id: 'P_IV'}), (b:Entity {id: 'D_VOID'}) MERGE (a)-[:影响, 方向: '注射速度过快卷气导致气泡']->(b);
+MATCH (a:Entity {id: 'P_IV'}), (b:Entity {id: 'D_WELD'}) MERGE (a)-[:影响, 方向: '注射速度过慢料流前沿冷却形成熔接线']->(b);
+MATCH (a:Entity {id: 'P_HP'}), (b:Entity {id: 'D_SINK'}) MERGE (a)-[:影响, 方向: '保压压力不足导致缩痕']->(b);
+MATCH (a:Entity {id: 'P_HP'}), (b:Entity {id: 'D_DIM'}) MERGE (a)-[:影响, 方向: '保压压力波动导致尺寸波动']->(b);
+MATCH (a:Entity {id: 'P_HP'}), (b:Entity {id: 'D_FLASH'}) MERGE (a)-[:影响, 方向: '保压压力过高导致飞边']->(b);
+MATCH (a:Entity {id: 'P_HT'}), (b:Entity {id: 'D_SINK'}) MERGE (a)-[:影响, 方向: '保压时间不足导致缩痕']->(b);
+MATCH (a:Entity {id: 'P_HT'}), (b:Entity {id: 'D_DIM'}) MERGE (a)-[:影响, 方向: '保压时间不足收缩未补偿尺寸偏小']->(b);
+MATCH (a:Entity {id: 'P_CT'}), (b:Entity {id: 'D_WARP'}) MERGE (a)-[:影响, 方向: '冷却时间不足导致翘曲']->(b);
+MATCH (a:Entity {id: 'P_CT'}), (b:Entity {id: 'D_SINK'}) MERGE (a)-[:影响, 方向: '冷却时间不足过早脱模导致缩痕']->(b);
+MATCH (a:Entity {id: 'C_COOL'}), (b:Entity {id: 'D_WARP'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_ANNEAL'}), (b:Entity {id: 'D_WARP'}) MERGE (a)-[:解决, 说明: '对已成型制品消除内应力']->(b);
+MATCH (a:Entity {id: 'C_HOLD'}), (b:Entity {id: 'D_SINK'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_MOLD_T_DOWN'}), (b:Entity {id: 'D_SINK'}) MERGE (a)-[:解决, 说明: '降低模温加快表层凝固']->(b);
+MATCH (a:Entity {id: 'C_PRESS_DOWN'}), (b:Entity {id: 'D_FLASH'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_DRY'}), (b:Entity {id: 'D_SILVER'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_PRESS_DOWN'}), (b:Entity {id: 'D_SILVER'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_MOLD_T_UP'}), (b:Entity {id: 'D_WELD'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_PRESS_UP'}), (b:Entity {id: 'D_WELD'}) MERGE (a)-[:解决, 说明: '提高注射速度减小料流前沿温差']->(b);
+MATCH (a:Entity {id: 'C_DRY'}), (b:Entity {id: 'D_VOID'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_PRESS_UP'}), (b:Entity {id: 'D_SHORT'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_MOLD_T_UP'}), (b:Entity {id: 'D_SHORT'}) MERGE (a)-[:解决, 说明: '提高模温改善流动性']->(b);
+MATCH (a:Entity {id: 'C_VENT'}), (b:Entity {id: 'D_BURN'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_PRESS_DOWN'}), (b:Entity {id: 'D_BURN'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_ANNEAL'}), (b:Entity {id: 'D_CRACK'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_HOLD'}), (b:Entity {id: 'D_DIM'}) MERGE (a)-[:解决]->(b);
+MATCH (a:Entity {id: 'C_MOLD_T_UP'}), (b:Entity {id: 'D_CRACK'}) MERGE (a)-[:解决, 说明: '提高模温降低内应力']->(b);
+MATCH (a:Entity {id: 'R_HOLD_TIME'}), (b:Entity {id: 'P_HT'}) MERGE (a)-[:约束]->(b);
+MATCH (a:Entity {id: 'R_HOLD_PRESSURE'}), (b:Entity {id: 'P_HP'}) MERGE (a)-[:约束]->(b);
+MATCH (a:Entity {id: 'R_MELT_RANGE'}), (b:Entity {id: 'P_MeltT'}) MERGE (a)-[:约束]->(b);
+MATCH (a:Entity {id: 'R_MOLD_TEMP'}), (b:Entity {id: 'P_MT'}) MERGE (a)-[:约束]->(b);
+MATCH (a:Entity {id: 'R_PRESS_MARGIN'}), (b:Entity {id: 'P_IP'}) MERGE (a)-[:约束]->(b);
+MATCH (a:Entity {id: 'R_COOL_RATIO'}), (b:Entity {id: 'P_CT'}) MERGE (a)-[:约束]->(b);
