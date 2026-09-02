@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注塑成型智能工艺参数优化与质量预测系统</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/libs/element-plus.css">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/libs/vue.min.js"></script>
+  <script src="/libs/element-plus.min.js"></script>
+  <script src="/libs/echarts.min.js"></script>
+  <script src="/libs/axios.min.js"></script>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <el-container class="layout">
+      <!-- 侧边栏 -->
+      <el-aside width="220px" class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">注</div>
+          <div class="brand-text">
+            <div class="brand-title">注塑智能工艺系统</div>
+            <div class="brand-sub">Injection AI</div>
+          </div>
+        </div>
+        <el-menu :default-active="page" @select="switchPage" class="menu">
+          <el-menu-item index="recommend">
+            <el-icon><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2a7 7 0 0 0-4 12.7V20a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-5.3A7 7 0 0 0 12 2zm-2 18v-2h4v2h-4zm1-14.5V8h2V5.5A5 5 0 0 1 17 10c0 .9-.2 1.7-.7 2.5h-8.6A5 5 0 0 1 11 5.5z"/></svg></el-icon>
+            参数推荐
+          </el-menu-item>
+          <el-menu-item index="predict">
+            <el-icon><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M3 17V7h2v8.5l3.5-5 3 3L18 5h2v12h-2v-8.5l-6.5 9-3-3L5 19v-2z"/></svg></el-icon>
+            质量预测
+          </el-menu-item>
+          <el-menu-item index="knowledge">
+            <el-icon><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-1-5h2v2h-2zm2-8h-2v6h2z"/></svg></el-icon>
+            知识检索
+          </el-menu-item>
+          <el-menu-item index="dashboard">
+            <el-icon><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M3 3h8v8H3zm10 0h8v18h-8zM3 13h8v8H3z"/></svg></el-icon>
+            数据看板
+          </el-menu-item>
+          <el-menu-item index="records">
+            <el-icon><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 2v14h14V5zm2 2h4v4H7zm6 0h4v2h-4zm0 4h4v2h-4zM7 11h4v6H7z"/></svg></el-icon>
+            数据记录
+          </el-menu-item>
+          <el-menu-item index="feedback">
+            <el-icon><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm1-13h-2v6l5 3 1-1.7-4-2.3z"/></svg></el-icon>
+            反馈修正
+          </el-menu-item>
+        </el-menu>
+      </el-aside>
+
+      <!-- 主内容区 -->
+      <el-main class="main">
+        <recommend-page v-show="page==='recommend'"></recommend-page>
+        <predict-page v-show="page==='predict'"></predict-page>
+        <knowledge-page v-show="page==='knowledge'"></knowledge-page>
+        <dashboard-page v-show="page==='dashboard'"></dashboard-page>
+        <records-page v-show="page==='records'"></records-page>
+        <feedback-page v-show="page==='feedback'"></feedback-page>
+      </el-main>
+    </el-container>
+  </div>
+
+  <script src="/assets/components.js"></script>
+  <script src="/assets/pages2.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

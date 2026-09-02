@@ -1,0 +1,130 @@
+/* ============ 全局与布局 ============ */
+:root {
+  /* 图表色板(dataviz 规范: 已验证通过 CVD 检查) */
+  --series-1: #2a78d6;  /* blue   */
+  --series-2: #eb6834;  /* orange */
+  --series-3: #1baf7a;  /* aqua   */
+  --series-4: #eda100;  /* yellow */
+  --series-5: #e87ba4;  /* magenta*/
+  --series-6: #008300;  /* green  */
+  --series-7: #4a3aa7;  /* violet */
+  --series-8: #e34948;  /* red    */
+  /* 状态色(固定) */
+  --status-good: #0ca30c;
+  --status-critical: #d03b3b;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  /* 图表墨水 */
+  --ink-primary: #0b0b0b;
+  --ink-secondary: #52514e;
+  --ink-muted: #898781;
+  --gridline: #e1e0d9;
+  --baseline: #c3c2b7;
+  --chart-surface: #fcfcfb;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  background: #f5f6f8;
+  color: var(--ink-primary);
+}
+[v-cloak] { display: none; }
+
+.layout { height: 100vh; }
+.sidebar {
+  background: #1d2a3a;
+  overflow-y: auto;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  padding: 18px 16px; color: #fff;
+}
+.brand-icon {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: linear-gradient(135deg, #2a78d6, #1baf7a);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 700; flex-shrink: 0;
+}
+.brand-title { font-size: 14px; font-weight: 600; }
+.brand-sub { font-size: 11px; opacity: .6; }
+.menu { background: transparent; border-right: none; }
+.menu .el-menu-item { color: #c6d0dc; }
+.menu .el-menu-item:hover { background: rgba(255,255,255,.06); color: #fff; }
+.menu .el-menu-item.is-active { color: #fff; background: rgba(42,120,214,.35); }
+
+.main { padding: 20px 24px; overflow-y: auto; height: 100vh; }
+
+/* ============ 通用卡片与工具 ============ */
+.page-card {
+  background: #fff; border-radius: 10px; padding: 20px;
+  box-shadow: 0 1px 3px rgba(11,11,11,.06);
+  margin-bottom: 16px;
+}
+.page-title { font-size: 18px; font-weight: 700; margin: 2px 0 4px; }
+.page-desc { font-size: 13px; color: var(--ink-secondary); margin-bottom: 14px; }
+.card-title {
+  font-size: 15px; font-weight: 600; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.card-title::before {
+  content: ""; width: 4px; height: 16px; border-radius: 2px;
+  background: var(--series-1);
+}
+.mt16 { margin-top: 16px; }
+.flex { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+
+/* 参数输入网格 */
+.param-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px 14px;
+}
+.param-item .label {
+  font-size: 12px; color: var(--ink-secondary); margin-bottom: 2px;
+  display: flex; justify-content: space-between;
+}
+.param-item .hint { color: var(--ink-muted); font-size: 11px; }
+
+/* 结果展示 */
+.big-prob { font-size: 44px; font-weight: 700; line-height: 1.1; }
+.prob-ok { color: var(--status-good); }
+.prob-bad { color: var(--status-critical); }
+
+/* 知识卡片 */
+.knowledge-card {
+  border: 1px solid #ececec; border-radius: 8px; padding: 12px 14px;
+  margin-bottom: 10px; transition: box-shadow .15s;
+}
+.knowledge-card:hover { box-shadow: 0 2px 8px rgba(11,11,11,.08); }
+.knowledge-card .name { font-weight: 600; font-size: 14px; }
+.knowledge-card .prop { font-size: 12px; color: var(--ink-secondary); margin-top: 4px; }
+
+/* 统计磁贴(hero figure 规范) */
+.stat-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 16px; }
+.stat-tile {
+  background: #fff; border-radius: 10px; padding: 16px 18px;
+  box-shadow: 0 1px 3px rgba(11,11,11,.06);
+}
+.stat-tile .label { font-size: 12px; color: var(--ink-secondary); }
+.stat-tile .value { font-size: 30px; font-weight: 600; margin-top: 6px; }
+.stat-tile .delta { font-size: 12px; margin-top: 4px; }
+
+.chart-box { width: 100%; height: 300px; }
+.chart-box-sm { width: 100%; height: 260px; }
+
+/* 表格内参数弹窗 */
+.param-pop { max-width: 460px; }
+.param-pop .row { display: flex; justify-content: space-between; padding: 3px 0; font-size: 13px; border-bottom: 1px dashed #f0f0f0; }
+
+/* 缺陷分布条(预测页) */
+.defect-bar { margin-bottom: 10px; }
+.defect-bar .bar-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
+.defect-bar .bar-label .pct { color: var(--ink-secondary); }
+
+/* 反馈对比 */
+.fb-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 900px) { .fb-compare { grid-template-columns: 1fr; } }
+
+.el-tag { border-radius: 4px; }
