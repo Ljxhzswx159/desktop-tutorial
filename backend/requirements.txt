@@ -1,0 +1,12 @@
+# 注塑智能工艺系统后端依赖(Python 3.13, 清华镜像安装)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+sqlalchemy>=2.0
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.5
+xgboost>=2.1
+joblib>=1.4
+openpyxl>=3.1
+deap>=1.4
